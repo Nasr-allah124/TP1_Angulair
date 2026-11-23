@@ -1,0 +1,48 @@
+<section class="exercise">
+  <h2>Exercice 2 · Reactive Forms</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <mat-form-field appearance="outline">
+      <mat-label>Nom complet</mat-label>
+      <input matInput type="text" autocomplete="name" required formControlName="fullName" [errorStateMatcher]="touchedMatcher">
+      @if (form.controls.fullName.touched && form.controls.fullName.hasError('required')) {
+        <mat-error>Ce champ est obligatoire.</mat-error>
+      } @else if (form.controls.fullName.touched && form.controls.fullName.hasError('minlength')) {
+        <mat-error>Le nom doit contenir au moins 3 caractères.</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" autocomplete="email" required formControlName="email" [errorStateMatcher]="touchedMatcher">
+      @if (form.controls.email.touched && form.controls.email.hasError('required')) {
+        <mat-error>Ce champ est obligatoire.</mat-error>
+      } @else if (form.controls.email.touched && form.controls.email.hasError('email')) {
+        <mat-error>Saisissez une adresse email valide.</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Âge</mat-label>
+      <input matInput type="number" autocomplete="off" required formControlName="age" [errorStateMatcher]="touchedMatcher">
+      @if (form.controls.age.touched && form.controls.age.hasError('required')) {
+        <mat-error>Ce champ est obligatoire.</mat-error>
+      } @else if (form.controls.age.touched && form.controls.age.hasError('min')) {
+        <mat-error>Vous devez avoir au moins 18 ans.</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Pays</mat-label>
+      <mat-select required formControlName="country" [errorStateMatcher]="touchedMatcher">
+        @for (option of countries; track option) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-select>
+      @if (form.controls.country.touched && form.controls.country.hasError('required')) {
+        <mat-error>Ce champ est obligatoire.</mat-error>
+      }
+    </mat-form-field>
+    <button mat-flat-button type="submit" [disabled]="form.invalid">S’inscrire</button>
+  </form>
+
+  @if (submitted; as data) {
+    <app-registration-summary [registration]="data" role="status" />
+  }
+</section>

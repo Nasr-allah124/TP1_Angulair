@@ -1,0 +1,17 @@
+﻿@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+* { box-sizing: border-box; }
+body { margin: 0; background: #f2f5fa; color: #172437; font-family: system-ui, sans-serif; }
+main { max-width: 1050px; margin: auto; padding: 2rem 1rem 3rem; }
+h1 { margin: 0 0 1.5rem; }
+.exercises { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
+.exercise { background: white; border: 1px solid #dbe3ee; border-radius: 1rem; padding: 1.5rem; }
+h2 { margin: 0 0 1.25rem; font-size: 1.25rem; }
+form { display: grid; gap: .7rem; justify-items: start; }
+mat-form-field { width: 100%; }
+app-registration-summary { display: block; margin-top: 1.5rem; padding: .75rem 1rem; border-radius: .75rem; background: #eef5ff; overflow-wrap: anywhere; }
+h3 { margin: 0 0 .75rem; font-size: 1rem; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: .4rem 1rem; margin: 0; }
+dt { font-weight: 600; }
+dd { margin: 0; }
+@media (max-width: 730px) { .exercises { grid-template-columns: 1fr; } }

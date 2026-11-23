@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "projects": {
+    "tp1-angulair": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "index": "src/index.html",
+            "tsConfig": "tsconfig.json",
+            "styles": [
+              "src/styles.css"
+            ]
+          }
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "options": {
+            "buildTarget": "tp1-angulair:build"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "1981521e-d5db-4c36-a30d-09606961a3a0"
+  }
+}
